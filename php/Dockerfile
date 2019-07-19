@@ -65,7 +65,7 @@ RUN curl -sS https://getcomposer.org/installer | \
 # Add user for laravel application
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
-
+RUN gpasswd -a www root
 # Copy existing application directory permissions
 COPY --chown=www:www ./src /var/www
 
