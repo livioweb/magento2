@@ -5,7 +5,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: php/Dockerfile
     image: livio_rodrigues/php
     container_name: app
     restart: unless-stopped
@@ -59,11 +59,13 @@ services:
 
   redis:
     image: redis:5.0
+    container_name: redis
     networks:
       - app-network
 
   elasticsearch:
     image: elasticsearch:5.6
+    container_name: elasticsearch
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -72,6 +74,7 @@ services:
 
   mailhog:
     image: mailhog/mailhog
+    container_name: mailhog
     ports:
       - "1025"
       - "8025:8025"
