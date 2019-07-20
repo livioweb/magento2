@@ -68,6 +68,7 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 RUN gpasswd -a www root
 # Copy existing application directory permissions
 COPY --chown=www:www ./src /var/www
+COPY ./config/env.php /var/www/app/etc
 
 
 RUN apt-get install -y gnupg \
