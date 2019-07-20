@@ -81,6 +81,16 @@ services:
     networks:
       - app-network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8181:80
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - app-network
+
+
 #Docker Networks
 networks:
   app-network:

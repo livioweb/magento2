@@ -1,0 +1,39 @@
+https://magento.stackexchange.com/questions/178565/strange-error-when-running-setupupgrade-after-module-installation
+UPDATE core_config_data SET value = 0 WHERE path = 'dev/static/sign'
+
+If record not exist then run below query to Insert record,
+
+INSERT INTO core_config_data VALUES (null, 'default' , 0, 'dev/static/sign', 0);
+
+https://magenteiro.com/blog/magento-2/erros-e-problemas-comuns-no-magento-2-e-como-resolver/
+
+https://www.schoolofnet.com/forum/topico/erro-ao-carregar-css-em-admin-1793
+
+bin/magento setup:install \
+ --base-url=http://localhost/magento2ee \
+ --db-host=localhost \
+ --db-name=magento \
+ --db-user=magento \
+ --db-password=magento \
+ --backend-frontname=admin \
+ --admin-firstname=admin \
+ --admin-lastname=admin \
+ --admin-email=admin@admin.com \
+ --admin-user=admin \
+ --admin-password=admin123 \
+ --language=en_US \
+ --currency=USD \
+ --timezone=America/Chicago \
+ --use-rewrites=1
+
+ bin/magento setup:install --use-rewrites=1
+
+ https://magento.stackexchange.com/questions/97209/magento-2-css-and-javascript-not-loading-from-correct-folder
+
+ https://university.magedin.com/curso/iniciando-o-desenvolvimento-em-magento-2
+
+ https://www.mestremagento.com.br/forum/index.php?/topic/3-css-e-javascript-n%C3%A3o-carregam-aparece-uma-pasta-version-nas-requisi%C3%A7%C3%B5es/
+ php bin/magento setup:static-content:deploy pt_BR﻿﻿
+
+
+ https://docs.shipperhq.com/category/troubleshooting/ecommerce-platform/matrixrates/
