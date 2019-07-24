@@ -1,0 +1,2 @@
+dest_country_id,dest_region_id,dest_city,dest_zip,dest_zip_to,condition_name,condition_from_value,condition_to_value,price,shipping_method
+BR,493,*,65000000,65099999,*,*,*,*,standard

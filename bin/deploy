@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for version in */ ; do
+    for full in $version/*/ ; do
+        subtitution=${full/\/\//-}
+        tag=${subtitution::-1}
+        docker build -t liviorodrigues/magento2:$tag $full
+        docker push liviorodrigues/magento2:$tag
+    done
+done
+#!/bin/bash
+

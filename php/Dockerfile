@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
   lsof \
   default-mysql-client \
   vim \
+  wget \
   zip \
   pkg-config \
   patch;
@@ -28,11 +29,11 @@ RUN docker-php-source extract; \
   rm /tmp/freetype.patch
 RUN docker-php-ext-configure gd --with-freetype-dir --with-jpeg-dir=/usr/include/
 
-#ENV DOCKERIZE_VERSION v0.6.1
-#RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-#    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-#&& rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-
+RUN apt-get update
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 RUN docker-php-ext-install \
   bcmath \
@@ -71,9 +72,11 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 RUN gpasswd -a www root
 # Copy existing application directory permissions
-COPY --chown=www:www ./src /var/www
+RUN --chown=www:www /var/www
+#COPY --chown=www:www ./src /var/www
 COPY ./config/env.php /var/www/app/etc
 
+RUN chmod +x /var/www/bin/magento
 
 RUN apt-get install -y gnupg \
   && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
