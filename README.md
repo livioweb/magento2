@@ -105,11 +105,6 @@ bin/magento setup:install \
  --use-rewrites=1 \
  --use-secure-admin=1
 ````
-web/secure/use_in_frontend
-
-
-INSERT INTO core_config_data VALUES (null, 'default' , 0, 'dev/static/sign', 0);
-INSERT INTO core_config_data VALUES (null, 'default' , 0, 'web/secure/use_in_frontend', 1);
 
 
 bin/magento setup:store-config:set --use-rewrites=1
